@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>⚛️ SIMULEARN PHYSICS</title>
+
+    <link rel="stylesheet" href="webdesign.css">
+</head>
+
+<body>
+
+    <!-- =================================
+         LOGIN PAGE
+    ================================== -->
+
+    <div id="loginPage" class="login-container">
+
+        <div class="login-box">
+
+            <h1>⚛️ SIMULEARN PHYSICS</h1>
+
+            <p class="subtitle">
+                ⚛️ INTERACTIVE GENERAL PHYSICS 1
+            </p>
+
+            <form id="loginForm">
+
+                <label for="studentID">
+                    STUDENT ID
+                </label>
+
+                <input
+                    type="text"
+                    id="studentID"
+                    placeholder="ENTER YOUR STUDENT ID"
+                    required
+                >
+
+                <button type="submit" class="submit-btn">
+                    LOGIN
+                </button>
+
+                <p id="loginMessage"></p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- =================================
+         MAIN PAGE
+    ================================== -->
+
+    <div id="mainPage" class="hidden">
+
+        <!-- HEADER -->
+
+        <header class="main-header">
+
+            <div>
+                <h1>⚛️ SIMULEARN PHYSICS</h1>
+                <p>⚛️GENERAL PHYSICS 1 INTERACTIVE SIMULATION</p>
+            </div>
+
+            <div class="user">
+
+                <span id="welcome">
+                    WELCOME!
+                </span>
+
+                <button id="logout">
+                    LOGOUT
+                </button>
+
+            </div>
+
+        </header>
+        
+        <!-- =================================
+             PROJECTILE MOTION
+        ================================== -->
+
+        <section id="projectileSimulation" class="section">
+
+            <canvas id="canvas"></canvas>
+
+            <h1 class="title">
+                🚀 PROJECTILE MOTION SIMULATION
+            </h1>
+
+            <div class="inputs">
+
+                <div class="input-row">
+
+                    <label for="Velocity">
+                        Enter a value for V:
+                    </label>
+
+                    <input
+                        type="number"
+                        id="velocity"
+                        value="100"
+                        oninput="updateGraph()"
+                    >
+
+                </div>
+
+                <div class="input-row">
+
+                    <label for="Theta">
+                        Enter a value for θ:
+                    </label>
+
+                    <input
+                        type="number"
+                        id="theta"
+                        value="45"
+                        oninput="updateGraph()"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="controls">
+
+                <button
+                    id="runButton"
+                    onclick="startSimulation()"
+                >
+                    Run Simulation
+                </button>
+
+            </div>
+
+
+            <button
+                id="speedButton"
+                onclick="changeSpeed()"
+            >
+                1x
+            </button>
+
+
+            <div id="ball">
+                🏀
+            </div>
+
+        </section>
+
+
+        <!-- =================================
+             SCIENTIFIC CALCULATOR
+        ================================== -->
+
+        <section id="calculator" class="section">
+
+            <h2>🧮 PHYSICS SCIENTIFIC CALCULATOR</h2>
+
+            <p class="calculator-description">
+                Scientific calculator for physics calculations.
+            </p>
+
+
+            <div class="scientific-calculator">
+
+                <!-- DISPLAY -->
+
+                <div class="calculator-display">
+
+                    <div id="expression">
+                    </div>
+
+                    <div id="result">
+                        0
+                    </div>
+
+                </div>
+
+
+                <!-- TOP BUTTONS -->
+
+                <div class="calculator-top">
+
+                    <button class="menu-button">
+                        ☰
+                    </button>
+
+                    <button class="pro-button">
+                        ◇ PRO
+                    </button>
+
+                    <button class="top-button">
+                        Σ
+                    </button>
+
+                    <button class="top-button">
+                        ⚙
+                    </button>
+
+                    <button class="top-button">
+                        ±
+                    </button>
+
+                    <button class="top-button">
+                        ▣
+                    </button>
+
+                    <button
+                        id="angleMode"
+                        class="angle-button"
+                    >
+                        RAD
+                    </button>
+
+                </div>
+
+
+                <!-- SCIENTIFIC BUTTONS -->
+
+                <div class="scientific-buttons">
+
+                    <button class="shift-button">
+                        SHIFT
+                    </button>
+
+                    <button class="alpha-button">
+                        ALPHA
+                    </button>
+
+                    <button>
+                        MODE
+                    </button>
+
+                    <button>
+                        2nd
+                    </button>
+
+
+                    <button
+                        onclick="calculateFunction('sqrt')"
+                    >
+                        √
+                    </button>
+
+                    <button
+                        onclick="calculateFunction('square')"
+                    >
+                        x²
+                    </button>
+
+                    <button
+                        onclick="calculateFunction('power')"
+                    >
+                        xʸ
+                    </button>
+
+                    <button
+                        onclick="calculateFunction('inverse')"
+                    >
+                        x⁻¹
+                    </button>
+
+
+                    <button
+                        onclick="calculateFunction('sin')"
+                    >
+                        sin
+                    </button>
+
+                    <button
+                        onclick="calculateFunction('cos')"
+                    >
+                        cos
+                    </button>
+
+                    <button
+                        onclick="calculateFunction('tan')"
+                    >
+                        tan
+                    </button>
+
+                    <button
+                        onclick="calculateFunction('log')"
+                    >
+                        log
+                    </button>
+
+
+                    <button
+                        onclick="calculateFunction('ln')"
+                    >
+                        ln
+                    </button>
+
+                    <button
+                        onclick="calculateFunction('factorial')"
+                    >
+                        x!
+                    </button>
+
+                    <button
+                        onclick="calculateFunction('pi')"
+                    >
+                        π
+                    </button>
+
+                    <button
+                        onclick="calculateFunction('e')"
+                    >
+                        e
+                    </button>
+
+
+                    <button
+                        onclick="calculateFunction('abs')"
+                    >
+                        |x|
+                    </button>
+
+                    <button
+                        onclick="calculateFunction('percent')"
+                    >
+                        %
+                    </button>
+
+                    <button
+                        onclick="calculateFunction('exp')"
+                    >
+                        EXP
+                    </button>
+
+                    <button onclick="backspace()">
+                        ⌫
+                    </button>
+
+                </div>
+
+
+                <!-- NUMBER PAD -->
+
+                <div class="calculator-number-pad">
+
+                    <button
+                        onclick="clearCalculator()"
+                        class="calculator-orange"
+                    >
+                        AC
+                    </button>
+
+                    <button onclick="appendValue('(')">
+                        (
+                    </button>
+
+                    <button onclick="appendValue(')')">
+                        )
+                    </button>
+
+                    <button onclick="appendValue('÷')">
+                        ÷
+                    </button>
+
+
+                    <button onclick="appendValue('7')">
+                        7
+                    </button>
+
+                    <button onclick="appendValue('8')">
+                        8
+                    </button>
+
+                    <button onclick="appendValue('9')">
+                        9
+                    </button>
+
+                    <button onclick="appendValue('×')">
+                        ×
+                    </button>
+
+
+                    <button onclick="appendValue('4')">
+                        4
+                    </button>
+
+                    <button onclick="appendValue('5')">
+                        5
+                    </button>
+
+                    <button onclick="appendValue('6')">
+                        6
+                    </button>
+
+                    <button onclick="appendValue('−')">
+                        −
+                    </button>
+
+
+                    <button onclick="appendValue('1')">
+                        1
+                    </button>
+
+                    <button onclick="appendValue('2')">
+                        2
+                    </button>
+
+                    <button onclick="appendValue('3')">
+                        3
+                    </button>
+
+                    <button onclick="appendValue('+')">
+                        +
+                    </button>
+
+
+                    <button onclick="appendValue('0')">
+                        0
+                    </button>
+
+                    <button onclick="appendValue('.')">
+                        .
+                    </button>
+
+                    <button
+                        onclick="appendValue('π')"
+                    >
+                        π
+                    </button>
+
+                    <button
+                        onclick="calculate()"
+                        class="equals-button"
+                    >
+                        =
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================
+             PHYSICS SEARCH
+        ================================== -->
+
+        <section id="search" class="section">
+
+            <h2>🔎 PHYSICS SEARCH</h2>
+
+            <input
+                id="searchInput"
+                oninput="searchPhysics()"
+                placeholder="Search Physics..."
+            >
+
+            <div id="searchResults"></div>
+
+        </section>
+
+
+        <!-- =================================
+             QUESTION GENERATOR
+        ================================== -->
+
+        <section id="questions" class="section">
+
+            <h2>❓ PHYSICS QUESTION GENERATOR</h2>
+
+            <p>
+                Choose one of the four choices.
+                
+            </p>
+
+            <button
+                class="primary"
+                onclick="generateQuestion()"
+            >
+                GENERATE NEW QUESTION
+            </button>
+
+
+            <div class="question-card">
+
+                <h3 id="questionText">
+                    Click "Generate New Question" to begin.
+                </h3>
+
+                <div
+                    id="choices"
+                    class="choices"
+                ></div>
+
+                <div id="questionFeedback"></div>
+
+                <div id="score">
+                    Score: 0 / 0
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+    
+
+    <!-- JAVASCRIPT -->
+
+    <script src="webscript.js"></script>
+
+</body>
+</html>
+
